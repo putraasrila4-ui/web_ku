@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+    <style>
+        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; color: white; font-family: sans-serif; }
+        .btn-start { padding: 25px 50px; font-size: 20px; background: #fe2c55; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px #fe2c55; }
+    </style>
+</head>
+<body>
+    <button class="btn-start" onclick="masuk()">MASUK KE WEB 🎵</button>
+
+    <script>
+        function masuk() {
+            // Memberi tanda ke browser bahwa musik diizinkan
+            localStorage.setItem("musik_on", "true");
+            // Langsung pindah ke halaman berikutnya
+            window.location.href = "tentang.html";
+        }
+    </script>
+</body>
+</html>
