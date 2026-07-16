@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Space Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Status Bar Atas */
+        .status-bar {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 255, 204, 0.2);
+        }
+
+        .ping { color: #00ffcc; font-weight: bold; }
+        .fps { color: #ffcc00; font-weight: bold; }
+
+        /* Wadah Utama */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #131926;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 255, 204, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #8a99ad;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol Boost */
+        .btn-boost {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ffcc 0%, #008f7a 100%);
+            border: 8px solid #131926;
+            color: #131926;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            transition: all 0.3s ease;
+            outline: none;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-boost:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+        }
+
+        /* Monitor Proses */
+        .process-log {
+            height: 60px;
+            margin: 15px 0;
+            color: #00ffcc;
+            font-size: 14px;
+            font-family: monospace;
+        }
+
+        /* Daftar Game */
+        .game-list {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .game-card:hover {
+            border-color: #00ffcc;
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        .game-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .game-status {
+            font-size: 11px;
+            color: #8a99ad;
+        }
+
+        .back-link {
+            margin-top: 25px;
+            display: inline-block;
+            color: #8a99ad;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover { color: #00ffcc; }
+    </style>
+</head>
+<body>
+
+    <!-- Status Bar Tiruan -->
+    <div class="status-bar">
+        <div class="ping">PING: <span id="ping-val">24</span> ms</div>
+        <div class="fps">FPS: 60.0</div>
+        <div>RAM: BERSINIH</div>
+    </div>
+
+    <!-- Panel Utama -->
+    <div class="container">
+        <h1>GAME SPACE PRO</h1>
+        <p class="subtitle">System Optimizer & Game Launcher</p>
+
+        <button class="btn-boost" id="boost-btn">BOOST</button>
+        <div class="process-log" id="log-text">Sistem siap dioptimalkan.</div>
+
+        <div class="game-list">
+            <div class="game-card" onclick="launchGame('Free Fire')">
+                <div class="game-title" style="color: #ff5500;">FREE FIRE</div>
+                <div class="game-status">Ultra Performance</div>
+            </div>
+            <div class="game-card" onclick="launchGame('Mobile Legends')">
+                <div class="game-title" style="color: #0099ff;">MOBILE LEGENDS</div>
+                <div class="game-status">HFR Mode Active</div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        // Simulasi perubahan angka PING secara acak biar terlihat hidup
+        setInterval(() => {
+            const randomPing = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
+            document.getElementById('ping-val').innerText = randomPing;
+        }, 2000);
+
+        // Aksi Tombol Boost Simulator
+        const boostBtn = document.getElementById('boost-btn');
+        const logText = document.getElementById('log-text');
+
+        boostBtn.addEventListener('click', () => {
+            boostBtn.disabled = true;
+            boostBtn.style.opacity = '0.6';
+            
+            let steps = [
+                "Mengosongkan RAM sistem...",
+                "Menghentikan aplikasi latar belakang...",
+                "Mengoptimalkan jaringan GPU...",
+                "Booster Berhasil! Performa Max Diaktifkan! 🚀"
+            ];
+            
+            let i = 0;
+            logText.innerText = steps[i];
+            
+            let interval = setInterval(() => {
+                i++;
+                if (i < steps.length) {
+                    logText.innerText = steps[i];
+                } else {
+                    clearInterval(interval);
+                    boostBtn.disabled = false;
+                    boostBtn.style.opacity = '1';
+                }
+            }, 1200);
+        });
+
+        // Aksi Buka Game Simulator
+        function launchGame(gameName) {
+            alert(gameName + " berhasil dioptimalkan! Membuka game dengan mode performa tinggi...");
+        }
+    </script>
+</body>
+</html>
