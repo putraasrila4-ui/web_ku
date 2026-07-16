@@ -1,4 +1,110 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+    <style>
+        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; color: white; font-family: sans-serif; }
+        .btn-start { padding: 25px 50px; font-size: 20px; background: #fe2c55; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px #fe2c55; }
+    </style>
+</head>
+<body>
+    <button class="btn-start" onclick="masuk()">MASUK KE WEB 🎵</button>
+
+    <script>
+        function masuk() {
+            // Memberi tanda ke browser bahwa musik diizinkan
+            localStorage.setItem("musik_on", "true");
+            // Langsung pindah ke halaman berikutnya
+            window.location.href = "tentang.html";
+        }
+    </script>
+</body>
+</html>
+
+<a href="gamespace.html" style="display: inline-block; padding: 10px 20px; background-color: #00ffcc; color: #131926; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px;">🎮 Buka Game Space</a>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .btn {
+            padding: 15px 40px;
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-main {
+            background: linear-gradient(45deg, #ff0055, #ff3388);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol ini langsung diarahkan ke gamespace.html -->
+    <a href="gamespace.html" class="btn btn-main">MASUK KE WEB & BOOST 🚀</a>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .btn-main {
+            padding: 15px 40px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff0055, #ff3388);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            text-align: center;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn-main:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hanya ada SATU tombol utama yang mengarah langsung ke Game Space -->
+    <a href="gamespace.html" class="btn-main">MASUK KE WEB & BOOST 🚀</a>
+
+</body>
+</html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +117,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
             background-color: #000000;
             color: #ffffff;
@@ -22,6 +129,8 @@
             padding: 20px;
             overflow: hidden;
         }
+
+        /* Halaman Awal (Landing) */
         #landing-page {
             display: flex;
             justify-content: center;
@@ -29,6 +138,7 @@
             height: 100vh;
             width: 100%;
         }
+
         .btn-entry {
             padding: 15px 40px;
             font-size: 16px;
@@ -43,21 +153,27 @@
             border: none;
             transition: 0.3s;
         }
+
         .btn-entry:active {
             transform: scale(0.95);
         }
+
+        /* Halaman Game Space (Tersembunyi di awal) */
         #gamespace-page {
-            display: none;
+            display: none; /* Disembunyikan dulu */
             width: 100%;
             max-width: 500px;
             flex-direction: column;
             align-items: center;
             animation: fadeIn 0.5s ease-in-out;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Status Bar Atas */
         .status-bar {
             width: 100%;
             display: flex;
@@ -68,8 +184,11 @@
             margin-bottom: 30px;
             border: 1px solid rgba(0, 255, 204, 0.2);
         }
+
         .ping { color: #00ffcc; font-weight: bold; }
         .fps { color: #ffcc00; font-weight: bold; }
+
+        /* Container Utama */
         .container {
             width: 100%;
             background: #131926;
@@ -79,17 +198,21 @@
             box-shadow: 0 8px 32px 0 rgba(0, 255, 204, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         h1 {
             font-size: 24px;
             margin-bottom: 5px;
             color: #00ffcc;
             text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
+
         .subtitle {
             font-size: 12px;
             color: #8a99ad;
             margin-bottom: 25px;
         }
+
+        /* Tombol Boost */
         .btn-boost {
             width: 140px;
             height: 140px;
@@ -108,6 +231,12 @@
             align-items: center;
             justify-content: center;
         }
+
+        .btn-boost:active {
+            transform: scale(0.95);
+        }
+
+        /* Monitor Proses */
         .process-log {
             height: 60px;
             margin: 15px 0;
@@ -115,12 +244,15 @@
             font-size: 14px;
             font-family: monospace;
         }
+
+        /* Daftar Game */
         .game-list {
             margin-top: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
+
         .game-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -130,31 +262,48 @@
             cursor: pointer;
             transition: 0.2s;
         }
+
         .game-card:hover {
             border-color: #00ffcc;
             background: rgba(0, 255, 204, 0.05);
         }
-        .game-title { font-weight: bold; font-size: 15px; margin-bottom: 5px; }
-        .game-status { font-size: 11px; color: #8a99ad; }
+
+        .game-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .game-status {
+            font-size: 11px;
+            color: #8a99ad;
+        }
     </style>
 </head>
 <body>
 
+    <!-- HALAMAN 1: Tombol Masuk Awal -->
     <div id="landing-page">
         <button class="btn-entry" onclick="bukaWeb()">MASUK KE WEB 🎵</button>
     </div>
 
+    <!-- HALAMAN 2: Konten Game Space (Muncul setelah diklik) -->
     <div id="gamespace-page">
+        <!-- Status Bar Tiruan -->
         <div class="status-bar">
             <div class="ping">PING: <span id="ping-val">24</span> ms</div>
             <div class="fps">FPS: 60.0</div>
             <div>RAM: OPTIMAL</div>
         </div>
+
+        <!-- Panel Utama -->
         <div class="container">
             <h1>GAME SPACE PRO</h1>
             <p class="subtitle">System Optimizer & Game Launcher</p>
+
             <button class="btn-boost" id="boost-btn">BOOST</button>
             <div class="process-log" id="log-text">Sistem siap dioptimalkan.</div>
+
             <div class="game-list">
                 <div class="game-card" onclick="launchGame('Free Fire')">
                     <div class="game-title" style="color: #ff5500;">FREE FIRE</div>
@@ -169,30 +318,39 @@
     </div>
 
     <script>
+        // Fungsi memunculkan Game Boost saat tombol merah diklik
         function bukaWeb() {
             document.getElementById('landing-page').style.display = 'none';
             document.getElementById('gamespace-page').style.display = 'flex';
-            document.body.style.backgroundColor = '#0b0f19';
+            document.body.style.backgroundColor = '#0b0f19'; // Ubah background jadi biru gelap e-sports
         }
+
+        // Simulasi perubahan angka PING
         setInterval(() => {
             if (document.getElementById('gamespace-page').style.display === 'flex') {
                 const randomPing = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
                 document.getElementById('ping-val').innerText = randomPing;
             }
         }, 2000);
+
+        // Aksi Tombol Boost
         const boostBtn = document.getElementById('boost-btn');
         const logText = document.getElementById('log-text');
+
         boostBtn.addEventListener('click', () => {
             boostBtn.disabled = true;
             boostBtn.style.opacity = '0.6';
+            
             let steps = [
                 "Mengosongkan RAM sistem...",
                 "Menghentikan aplikasi latar belakang...",
                 "Mengoptimalkan jaringan GPU...",
                 "Booster Berhasil! Performa Max Diaktifkan! 🚀"
             ];
+            
             let i = 0;
             logText.innerText = steps[i];
+            
             let interval = setInterval(() => {
                 i++;
                 if (i < steps.length) {
@@ -204,8 +362,10 @@
                 }
             }, 1200);
         });
+
+        // Aksi Buka Game
         function launchGame(gameName) {
-            alert(gameName + " berhasil dioptimalkan! Membuka game...");
+            alert(gameName + " berhasil dioptimalkan! Membuka game dengan mode performa tinggi...");
         }
     </script>
 </body>
